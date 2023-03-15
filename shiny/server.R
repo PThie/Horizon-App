@@ -6,36 +6,6 @@ server <- function(input, output) {
     # read data from Excel
     database <- readxl::read_excel("G:/work/horizon_database/data/database.xlsx")
     
-    # Filter data based on user input
-    # filtered <- reactive(
-    #     if(input$show_all == TRUE) {
-    #         database
-    #     }
-    #     database |>
-    #         dplyr::filter(key_words == input$search_query)
-    # 
-    # )
-    
-    # Show complete table if switch "Show all data" is ON
-    complete_table <- reactive(
-        {
-            if(input$show_all == TRUE){
-                database
-            }
-        }
-    )
-    
-    # Ask for filtering if switch "Show all data" is OFF
-    prompt_for_search <- reactive(
-        {
-            if(input$show_all == FALSE){
-                print("Please enter a search value")
-            }
-        }
-    )
-    
-    # reactive({print(input$search_query)})
-    
     # Filter table based on user input
     filtered <- reactive(
         {
@@ -50,8 +20,6 @@ server <- function(input, output) {
     )
     
     # Render table based on filter input
-    output$table_complete <- renderTable(complete_table())
-    output$search_prompt <- renderText(prompt_for_search())
     output$table_filtered <- renderTable(database[filtered(), ])
     
     

@@ -27,26 +27,9 @@ ui <- navbarPage(
                         1,
                         br(),
                         actionButton(inputId = "submit", label = "Search")
-                    ),
-                    column(
-                        3,
-                        br(),
-                        shinyWidgets::materialSwitch(inputId = "show_all", label = "Show all data", value = TRUE, status = "success")
                     )
                 ),
                 fluidRow(
-                    column(
-                        6,
-                        tableOutput("table_complete")
-                    )
-                ),
-                fluidRow(
-                    column(
-                        6,
-                        textOutput("search_prompt")
-                    )
-                ),
-                fluidPage(
                     tableOutput("table_filtered")
                 )
             ),
@@ -68,6 +51,4 @@ ui <- navbarPage(
             )
         )
     )
-    
-    "TEST"
 )
