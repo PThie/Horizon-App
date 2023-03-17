@@ -5,6 +5,9 @@ library(shiny)
 library(bslib)
 library(particlesjs)
 library(shinyjs)
+library(shinyalert)
+library(DT)
+library(xlsx)
 
 #--------------------------------------------------
 # JS code for allowing to hit ENTER for inputs
@@ -85,7 +88,7 @@ ui <- fluidPage(
                         column(
                             6,
                             tagAppendAttributes(
-                                textInput(inputId = "search_query", "", width = "100%", placeholder = "Enter you search here"),
+                                textInput(inputId = "search_query", "", width = "100%", placeholder = "Enter your search here"),
                                 `data-proxy-click` = "submit"
                             )
                         ),
@@ -106,15 +109,9 @@ ui <- fluidPage(
                         ),
                         column(
                             6,
-                            tableOutput(outputId = "table_filtered")
+                            dataTableOutput(outputId = "table_filtered")
                         )
                     )
-                    # fluidRow(
-                    #     column(
-                    #         12,
-                    #         textOutput(outputId = "text")
-                    #     )
-                    # )
                 )
             ),
             hr(),
