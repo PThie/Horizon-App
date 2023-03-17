@@ -5,3 +5,7 @@ run.txt
 runShinyApp.R
 ShinyApp.log
 .Rhistory
+archive
+assets
+rsconnect
+database.xlsx
